@@ -1,7 +1,6 @@
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.schema import (HumanMessage, SystemMessage)
 import streamlit as st
-
 
 chat_model = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.1)
 
@@ -27,4 +26,4 @@ if st.button("질문하기", key="question_button"):
                 result = chat_model(messages)
                 st.write("Tech_support: ", result.content)
                 user_input = st.text_input("더 궁금한 점이 있으면 입력하세요 (종료하려면 '종료'를 입력하세요)", key=f"input_{len(messages)}")
-    st.write("상담을 종료합니다. 감사합니다.")
+st.write("상담을 종료합니다. 감사합니다.")
