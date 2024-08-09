@@ -2,8 +2,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import (HumanMessage, SystemMessage)
 import streamlit as st
 
-OPENAI_API_KEY = "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"
-chat_model = ChatOpenAI(model_name="gpt-3.5-turbo", api_key=OPENAI_API_KEY, temperature=0.1)
+
+chat_model = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.1)
 
 st.title("전자기기 에러 해결 상담사")
 st.subheader("저는 당신을 위한  _:green[전자기기 에러 해결 상담사]_  tech_support입니다. 🛠️🧰")
@@ -27,4 +27,6 @@ if st.button("질문하기", key="question_button"):
                 result = chat_model(messages)
                 st.write("Tech_support: ", result.content)
                 user_input = st.text_input("더 궁금한 점이 있으면 입력하세요 (종료하려면 '종료'를 입력하세요)", key=f"input_{len(messages)}")
+                if st.button("질문하기", key="question_button"):
+
     st.write("상담을 종료합니다. 감사합니다.")
